@@ -1,0 +1,9 @@
+/uploads/wishes/*
+!/uploads/wishes/.gitkeep
+/uploads/tmp/*
+!/uploads/tmp/.gitkeep
+config/local.php
+.DS_Store
+Thumbs.db
+*.log
+.env

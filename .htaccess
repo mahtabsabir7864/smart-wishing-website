@@ -1,0 +1,26 @@
+RewriteEngine On
+RewriteBase /smart-wishing/
+
+# Pretty wish URLs
+RewriteRule ^w/([A-Za-z0-9]{6,20})/?$ wish.php?code=$1 [L,QSA]
+RewriteRule ^wish/([a-z0-9-]{3,80})/?$ wish.php?slug=$1 [L,QSA]
+
+# Error documents
+ErrorDocument 404 /smart-wishing/404.php
+ErrorDocument 403 /smart-wishing/403.php
+ErrorDocument 500 /smart-wishing/500.php
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 7 days"
+    ExpiresByType image/png "access plus 7 days"
+    ExpiresByType image/webp "access plus 7 days"
+    ExpiresByType text/css "access plus 7 days"
+    ExpiresByType application/javascript "access plus 7 days"
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
